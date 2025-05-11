@@ -1330,3 +1330,177 @@ header {
     color: #6c757d;
     margin-top: 5px;
 }
+
+/* =====================
+   Property/Building Info Table Styles
+   ===================== */
+.property-info {
+    margin-bottom: 30px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 24px 24px 8px 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.info-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    color: #222;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+.info-table td {
+    padding: 6px 0;
+    font-size: 15px;
+    color: #222;
+    border: none;
+}
+.info-table td:first-child {
+    color: #888;
+    width: 44%;
+    font-weight: 500;
+}
+.info-table .text-success {
+    color: #23a57e !important;
+    font-weight: 600;
+}
+
+/* =====================
+   Amenities Grid Styles
+   ===================== */
+.amenities-grid {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+.amenity-item {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 18px 20px 10px 20px;
+    text-align: center;
+    min-width: 120px;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    color: #222;
+    border: 1px solid #eee;
+    transition: box-shadow 0.2s;
+}
+.amenity-item a {
+    color: #007bff;
+    font-weight: 500;
+    text-decoration: none;
+}
+.amenity-item.more-amenities {
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #007bff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+.amenity-item i {
+    margin-bottom: 8px;
+    font-size: 28px;
+    color: #222;
+}
+
+/* =====================
+   Transactions Table Styles
+   ===================== */
+.table-bordered {
+    border: 1px solid #eee;
+}
+.table-bordered th, .table-bordered td {
+    border: 1px solid #eee !important;
+    font-size: 15px;
+    padding: 8px 12px;
+}
+.table thead th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #222;
+}
+.table-responsive {
+    margin-top: 10px;
+}
+.nav-tabs .nav-link.active {
+    color: #23a57e;
+    border-color: #23a57e #23a57e #fff;
+    font-weight: 600;
+}
+.btn-outline-success.active, .btn-outline-success:active {
+    background: #23a57e;
+    color: #fff;
+    border-color: #23a57e;
+}
+.btn-outline-secondary.active, .btn-outline-secondary:active {
+    background: #e9ecef;
+    color: #222;
+    border-color: #e9ecef;
+}
+
+/* =====================
+   Footer Section
+   ===================== */
+.footer {
+    background: #181818 url('images/footer-bg.png');
+    color: #fff;
+    padding: 30px 0 10px 0;
+    font-size: 14px;
+}
+.footer-link {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 18px;
+    font-size: 14px;
+}
+.footer-link:hover {
+    text-decoration: underline;
+}
+.social-icons .social-icon {
+    width: 32px;
+    height: 32px;
+    background: #fff;
+    color: #181818;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    margin-right: 8px;
+    transition: background 0.2s;
+}
+.social-icons .social-icon:hover {
+    background: #23a57e;
+    color: #fff;
+}
+.app-downloads .app-store-btn {
+    height: 36px;
+    margin-right: 6px;
+}
+.flag-icon {
+    width: 22px;
+    height: 16px;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+.country-selector {
+    color: #fff;
+    font-size: 14px;
+}
+.copyright {
+    color: #888;
+    font-size: 12px;
+    margin-top: 18px;
+}

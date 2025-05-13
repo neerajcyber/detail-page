@@ -487,6 +487,69 @@ header {
     color: #00A496;
 }
 
+/* Share Button & Dropdown Custom Styles */
+.btn-save-custom, .btn-share-custom {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f5fbfa;
+    border: 1.5px solid #cbe7e1;
+    color: #00a496;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 8px 22px;
+    font-size: 18px;
+    transition: background 0.2s, border 0.2s;
+}
+.btn-save-custom:hover, .btn-share-custom:hover {
+    background: #eafaf3;
+    border-color: #b2e2d2;
+    color: #008060;
+}
+.share-dropdown-custom {
+    position: relative;
+    /* Ensure stacking context for dropdown */
+}
+.share-dropdown-custom .dropdown-menu.share-menu-custom {
+    min-width: 260px;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+    padding: 10px 0;
+    border: 1px solid #e6e6e6;
+    margin-top: 8px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1055; /* Above most content, matches Bootstrap modal z-index */
+    display: none;
+    will-change: transform;
+    transform: translateZ(0);
+}
+.share-dropdown-custom.show .dropdown-menu.share-menu-custom {
+    display: block;
+}
+.share-menu-custom .dropdown-item {
+    font-size: 16px;
+    padding: 10px 22px;
+    gap: 12px;
+    display: flex;
+    align-items: center;
+    border: none;
+    background: none;
+    transition: background 0.15s;
+}
+.share-menu-custom .dropdown-item:hover {
+    background: #f5fbfa;
+}
+.share-menu-custom i {
+    width: 28px;
+    text-align: center;
+    font-size: 20px;
+}
+.btn-share-custom.dropdown-toggle::after {
+    display: none;
+}
+
 /* =====================
    Property Details Section
    ===================== */
@@ -650,6 +713,50 @@ header {
 
 .sidebar {
     flex: 1;
+}
+
+/* Sidebar sticky scroll on desktop */
+@media (min-width: 992px) {
+  .sticky-sidebar {
+    position: sticky;
+    top: 100px;
+    align-self: flex-start;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+}
+body::-webkit-scrollbar {
+    width: 8px;
+    background: #f5fbfa;
+    border-radius: 8px;
+  }
+  body::-webkit-scrollbar-thumb {
+    background: #b2e2d2;
+    border-radius: 8px;
+    min-height: 40px;
+  }
+  body::-webkit-scrollbar-thumb:hover {
+    background: #00a496;
+  }
+/* Custom scrollbar for sticky sidebar */
+@media (min-width: 992px) {
+  .sticky-sidebar {
+    scrollbar-width: thin;
+    scrollbar-color: #b2e2d2 #f5fbfa;
+  }
+  .sticky-sidebar::-webkit-scrollbar {
+    width: 8px;
+    background: #f5fbfa;
+    border-radius: 8px;
+  }
+  .sticky-sidebar::-webkit-scrollbar-thumb {
+    background: #b2e2d2;
+    border-radius: 8px;
+    min-height: 40px;
+  }
+  .sticky-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #00a496;
+  }
 }
 
 /* =====================
@@ -1107,8 +1214,8 @@ header {
 }
 
 .developer-card {
-    border-top-left-radius:8px ;
-    border-top-right-radius:8px ;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     border: 1px solid #eee;
     /* border-radius: 8px; */
     padding: 15px;
@@ -1169,9 +1276,10 @@ header {
     border: none;
     color: #25D366;
 }
-.developer-bio{
-     border-bottom-left-radius:8px ;
-    border-bottom-right-radius:8px ;
+
+.developer-bio {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
     border: 1px solid #eee;
     /* border-radius: 8px; */
     padding: 15px;
@@ -1179,6 +1287,7 @@ header {
     flex-direction: column;
     align-items: center;
 }
+
 .developer-info {
     margin-top: 10px;
     background-color: white;
@@ -1278,7 +1387,7 @@ header {
 }
 
 .slider-container {
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }
 
 .slider-label {
@@ -1339,8 +1448,9 @@ header {
     background: #fff;
     border-radius: 8px;
     padding: 24px 24px 8px 24px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
+
 .info-title {
     font-size: 20px;
     font-weight: 700;
@@ -1350,22 +1460,26 @@ header {
     align-items: center;
     gap: 8px;
 }
+
 .info-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 10px;
 }
+
 .info-table td {
     padding: 6px 0;
     font-size: 15px;
     color: #222;
     border: none;
 }
+
 .info-table td:first-child {
     color: #888;
     width: 44%;
     font-weight: 500;
 }
+
 .info-table .text-success {
     color: #23a57e !important;
     font-weight: 600;
@@ -1380,6 +1494,7 @@ header {
     flex-wrap: wrap;
     margin-bottom: 10px;
 }
+
 .amenity-item {
     background: #f8f9fa;
     border-radius: 8px;
@@ -1395,11 +1510,13 @@ header {
     border: 1px solid #eee;
     transition: box-shadow 0.2s;
 }
+
 .amenity-item a {
     color: #007bff;
     font-weight: 500;
     text-decoration: none;
 }
+
 .amenity-item.more-amenities {
     background: #fff;
     border: 1px solid #ddd;
@@ -1409,6 +1526,7 @@ header {
     justify-content: center;
     font-weight: 500;
 }
+
 .amenity-item i {
     margin-bottom: 8px;
     font-size: 28px;
@@ -1421,30 +1539,39 @@ header {
 .table-bordered {
     border: 1px solid #eee;
 }
-.table-bordered th, .table-bordered td {
+
+.table-bordered th,
+.table-bordered td {
     border: 1px solid #eee !important;
     font-size: 15px;
     padding: 8px 12px;
 }
+
 .table thead th {
     background: #f8f9fa;
     font-weight: 600;
     color: #222;
 }
+
 .table-responsive {
     margin-top: 10px;
 }
+
 .nav-tabs .nav-link.active {
     color: #23a57e;
     border-color: #23a57e #23a57e #fff;
     font-weight: 600;
 }
-.btn-outline-success.active, .btn-outline-success:active {
+
+.btn-outline-success.active,
+.btn-outline-success:active {
     background: #23a57e;
     color: #fff;
     border-color: #23a57e;
 }
-.btn-outline-secondary.active, .btn-outline-secondary:active {
+
+.btn-outline-secondary.active,
+.btn-outline-secondary:active {
     background: #e9ecef;
     color: #222;
     border-color: #e9ecef;
@@ -1459,15 +1586,18 @@ header {
     padding: 30px 0 10px 0;
     font-size: 14px;
 }
+
 .footer-link {
     color: #fff;
     text-decoration: none;
     margin-right: 18px;
     font-size: 14px;
 }
+
 .footer-link:hover {
     text-decoration: underline;
 }
+
 .social-icons .social-icon {
     width: 32px;
     height: 32px;
@@ -1481,26 +1611,85 @@ header {
     margin-right: 8px;
     transition: background 0.2s;
 }
+
 .social-icons .social-icon:hover {
     background: #23a57e;
     color: #fff;
 }
+
 .app-downloads .app-store-btn {
     height: 36px;
     margin-right: 6px;
 }
+
 .flag-icon {
     width: 22px;
     height: 16px;
     margin-right: 4px;
     vertical-align: middle;
 }
+
 .country-selector {
     color: #fff;
     font-size: 14px;
 }
+
 .copyright {
     color: #888;
     font-size: 12px;
     margin-top: 18px;
+}
+
+/* =====================
+   Modal Email & Phone Styles
+   ===================== */
+.modal-content {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    border-bottom: none;
+    padding: 20px 20px 0;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.form-control {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-color: #ddd;
+}
+
+.phone-input {
+    display: flex;
+    align-items: center;
+}
+
+.phone-input .input-group-text {
+    background-color: transparent;
+    border-right: none;
+    padding-right: 0;
+}
+
+.phone-input .form-control {
+    border-left: none;
+}
+
+.btn-send {
+    background-color: #008060;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    border: none;
+}
+
+.btn-send:hover {
+    background-color: #006040;
+}
+
+.form-check {
+    margin-top: 15px;
 }

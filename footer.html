@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Listing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        .property-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        .action-buttons button {
+            border-radius: 4px;
+            margin-left: 5px;
+            padding: 6px 12px;
+        }
+        .save-btn {
+            background-color: #e8f7f3;
+            color: #2a9d8f;
+            border: none;
+        }
+        .share-btn {
+            background-color: white;
+            border: 1px solid #ddd;
+        }
+        .property-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .property-features {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .feature {
+            margin-right: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+        .highlight-box {
+            background-color: #f8f9fa;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        .highlight-text {
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .developer-info {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .amenity-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .amenity-list li {
+            margin-bottom: 5px;
+            position: relative;
+            padding-left: 15px;
+        }
+        .amenity-list li:before {
+            content: "-";
+            position: absolute;
+            left: 0;
+            color: #666;
+        }
+        .location-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .location-list li {
+            margin-bottom: 5px;
+            position: relative;
+            padding-left: 15px;
+        }
+        .location-list li:before {
+            content: "-";
+            position: absolute;
+            left: 0;
+            color: #666;
+        }
+        .read-more {
+            color: #007bff;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .developer-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .developer-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .developer-logo img {
+            width: 60px;
+        }
+        .developer-name {
+            font-weight: bold;
+            color: #186049;
+            margin-bottom: 15px;
+        }
+        .contact-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .contact-btn {
+            flex: 1;
+            padding: 8px;
+            text-align: center;
+            border-radius: 4px;
+            margin: 0 5px;
+        }
+        .email-btn {
+            background-color: white;
+            border: 1px solid #ddd;
+            color: #333;
+        }
+        .call-btn {
+            background-color: white;
+            border: 1px solid #ddd;
+            color: #333;
+        }
+        .whatsapp-btn {
+            background-color: #e8f7f3;
+            border: none;
+            color: #25D366;
+        }
+        .sidebar-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        .card-image {
+            height: 120px;
+            background-size: cover;
+            background-position: center;
+        }
+        .card-content {
+            padding: 15px;
+        }
+        .card-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .card-text {
+            font-size: 13px;
+            color: #666;
+        }
+        .links-section {
+            margin-top: 20px;
+        }
+        .links-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .links-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .links-list li {
+            margin-bottom: 8px;
+        }
+        .links-list a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .nearby-section {
+            margin-top: 20px;
+        }
+        .nearby-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .nearby-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .nearby-list li {
+            margin-bottom: 8px;
+        }
+        .nearby-list a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <div class="top-nav">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <div class="me-3">
+                    <i class="fas fa-globe"></i>
+                    <span class="ms-1">EN</span>
+                </div>
+                <div>
+                    <i class="fas fa-cog"></i>
+                    <span class="ms-1">Site settings</span>
+                </div>
+            </div>
+            <div class="d-flex align-items-center">
+                <div class="me-3">
+                    <i class="far fa-heart"></i>
+                    <span class="ms-1">Favourite properties</span>
+                </div>
+                <div class="me-3">
+                    <i class="far fa-star"></i>
+                    <span class="ms-1">Saved searches</span>
+                </div>
+                <div>
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span class="ms-1">Log in</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white main-nav">
+        <div class="container">
+            <a class="navbar-brand me-5" href="#">
+                <img src="images/main_logo.png" alt="Bayut" class="logo">
+            </a>
+            <div class="d-flex align-items-center me-4">
+                <img src="images/bayut.jpg" alt="MyBayut" class="mybayut-logo">
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#">Find my Agent</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Floor Plans</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="guidesDropdown" role="button" data-bs-toggle="dropdown">Guides</a>
+                        <ul class="dropdown-menu" aria-labelledby="guidesDropdown">
+                            <li><a class="dropdown-item" href="#">Area Guides</a></li>
+                            <li><a class="dropdown-item" href="#">Building Guides</a></li>
+                            <li><a class="dropdown-item" href="#">School Guides</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="marketDropdown" role="button" data-bs-toggle="dropdown">Market Intelligence</a>
+                        <ul class="dropdown-menu" aria-labelledby="marketDropdown">
+                            <li><a class="dropdown-item" href="#">Market Reports</a></li>
+                            <li><a class="dropdown-item" href="#">Price Trends</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">Agent Portal</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="eventsDropdown" role="button" data-bs-toggle="dropdown">Events</a>
+                        <ul class="dropdown-menu" aria-labelledby="eventsDropdown">
+                            <li><a class="dropdown-item" href="#">Upcoming Events</a></li>
+                            <li><a class="dropdown-item" href="#">Past Events</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Section -->
+    <div class="breadcrumb-section">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">For Sale:</li>
+                    <li class="breadcrumb-item"><a href="#">Dubai Apartments</a></li>
+                    <li class="breadcrumb-item"><a href="#">Dubai Science Park</a></li>
+                    <li class="breadcrumb-item"><a href="#">Binghatti Hillviews</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Bayut - Binghatti-Hillviews-10937</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Property Header -->
+                <div class="property-header">
+                    <div class="price">AED 1,150,560</div>
+                    <div class="action-buttons">
+                        <button class="save-btn"><i class="far fa-heart"></i> Save</button>
+                        <button class="share-btn"><i class="fas fa-share-alt"></i> Share</button>
+                    </div>
+                </div>
+                <!-- Property Title -->
+                <div class="property-title">Binghatti Hillviews, Dubai Science Park, Dubai</div>
+                <!-- Property Features -->
+                <div class="property-features">
+                    <div class="feature"><i class="fas fa-bed"></i> 1 Bed</div>
+                    <div class="feature"><i class="fas fa-bath"></i> 2 Baths</div>
+                    <div class="feature"><i class="fas fa-vector-square"></i> 904 sqft</div>
+                </div>
+                <!-- Highlight Box -->
+                <div class="highlight-box">
+                    <div class="highlight-text">HIGH ROI | NEWLY LAUNCHED | COMPLETION Q1 2026</div>
+                </div>
+                <!-- Developer Info -->
+                <div class="developer-info">Direct from the Developer | No commission fees | Cash Offer</div>
+                <!-- Property Description -->
+                <p>Discover Binghatti Hillviews, an extraordinary new launch in Dubai Science Park, "Where outstretched vistas inspire a perpetual way of life."</p>
+                <!-- Key Features (Collapsible) -->
+                <div class="section-title">Key Features:</div>
+                <div id="key-features-section" style="transition: max-height 0.4s ease; overflow: hidden;">
+                    <ul class="amenity-list">
+                        <li>Completion Date: Q1 2026</li>
+                        <li>New Launch – Be the first to own!</li>
+                        <li>100% Foreign Ownership – Ideal for international investors</li>
+                        <li>High Return on Investments</li>
+                        <li>Listed price applies for Cash Offer / Full Payment</li>
+                        <li>For Flexible Payment Plan Option - Contact for Exclusive Deals</li>
+                    </ul>
+                </div>
+                <div class="read-more" id="read-less-toggle">Read Less <i class="fas fa-chevron-up"></i></div>
+                <p>Offering a collection of sophisticated studios, 1, and 2-bedroom apartments. Immerse yourself in a world where luxury meets comfort, with meticulously crafted interiors and stunning panoramic views of Dubai Hills and the city skyline.</p>
+                <!-- Amenities -->
+                <div class="section-title">Exclusive Amenities:</div>
+                <ul class="amenity-list">
+                    <li>Basketball Court</li>
+                    <li>Kid's Play Area</li>
+                    <li>Outdoor pool deck</li>
+                    <li>Outdoor Fitness Area</li>
+                    <li>Yoga Area</li>
+                    <li>Outdoor Seating Area</li>
+                </ul>
+                <!-- Location -->
+                <div class="section-title">Prime Location:</div>
+                <ul class="location-list">
+                    <li>3 Minutes from Dubai Hills Mall</li>
+                    <li>12 Minutes from Dubai Hills Golf Club</li>
+                    <li>12 Minutes from Al Barsha Mall</li>
+                    <li>15 Minutes from Mall of the Emirates</li>
+                    <li>20 Minutes from Dubai Mall</li>
+                </ul>
+                <p>Conveniently connected to Al Khail Road and Umm Suqeim Street, with an upcoming metro line set to boost accessibility and investment potential.</p>
+                <p>Secure your luxury apartment today – Direct from the Developer | No Commission | Flexible Payment Plan!</p>
+                <p>Call/Whatsapp <a href="#" class="read-more">View Contact Detail</a> or email at Simon@... <a href="#" class="read-more">Send e-mail</a></p>
+                <!-- Gallery Section (Refined) -->
+                <div class="property-gallery d-flex gap-3 mb-4">
+                    <div class="gallery-main position-relative flex-grow-1">
+                        <img src="images/bayut.jpg" alt="Binghatti Hillviews Main View" class="w-100 rounded-3" style="height:400px;object-fit:cover;">
+                        <div class="gallery-badges position-absolute top-0 start-0 m-3 d-flex gap-2">
+                            <div class="badge bg-white text-dark fw-bold"><i class="fas fa-check"></i> TruCheck™</div>
+                            <div class="badge bg-white text-dark fw-bold">Off-Plan</div>
+                        </div>
+                        <div class="gallery-actions position-absolute bottom-0 start-0 m-3 d-flex gap-2">
+                            <button class="action-btn"><i class="fas fa-map-marker-alt"></i> Map</button>
+                            <button class="request-action-btn">Request video</button>
+                        </div>
+                        <div class="image-count position-absolute bottom-0 end-0 m-3 bg-dark text-white px-3 py-1 rounded">12</div>
+                    </div>
+                    <div class="gallery-sidebar d-flex flex-column gap-2" style="width:180px;">
+                        <img src="images/bayut.jpg" alt="Property Pool View" class="rounded-3" style="height:90px;object-fit:cover;">
+                        <img src="images/bayut.jpg" alt="Property Interior" class="rounded-3" style="height:90px;object-fit:cover;">
+                        <img src="images/bayut.jpg" alt="Property Bedroom" class="rounded-3" style="height:90px;object-fit:cover;">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <!-- Developer Card -->
+                <div class="developer-card mb-4">
+                    <div class="developer-logo">
+                        <img src="images/bayut.jpg" alt="Binghatti Developers">
+                    </div>
+                    <div class="developer-name">Binghatti Developers</div>
+                    <div class="contact-buttons">
+                        <div class="contact-btn email-btn"><i class="far fa-envelope"></i> Email</div>
+                        <div class="contact-btn call-btn"><i class="fas fa-phone"></i> Call</div>
+                        <div class="contact-btn whatsapp-btn"><i class="fab fa-whatsapp"></i></div>
+                    </div>
+                </div>
+                <!-- Dubai Science Park Card -->
+                <div class="sidebar-card mb-3">
+                    <div class="card-image" style="background-image: url('images/bayut.jpg');"></div>
+                    <div class="card-content">
+                        <div class="card-title">Dubai Science Park</div>
+                        <div class="card-text">See the community attractions and Read...</div>
+                    </div>
+                </div>
+                <!-- Luxury Villas Card -->
+                <div class="sidebar-card mb-3">
+                    <div class="card-content">
+                        <div class="card-title">Luxury Villas from AED 1.96M in Dubai</div>
+                        <div class="card-text">Enjoy world-class community living | Flexible payment plan options available</div>
+                    </div>
+                </div>
+                <!-- DAMAC Card -->
+                <div class="sidebar-card mb-3">
+                    <div class="card-image" style="background-image: url('images/bayut.jpg');"></div>
+                    <div class="card-content d-flex justify-content-between align-items-center">
+                        <img src="images/bayut.jpg" alt="DAMAC" style="height:30px;">
+                        <button class="btn btn-success">Enquire Now</button>
+                    </div>
+                </div>
+                <!-- Useful Links Section -->
+                <div class="links-section">
+                    <div class="links-title">Useful Links</div>
+                    <ul class="links-list">
+                        <li><a href="#">Properties for sale in Dubai</a></li>
+                        <li><a href="#">Properties for sale in Dubai Science Park</a></li>
+                        <li><a href="#">Properties for sale in Binghatti Hillviews</a></li>
+                        <li><a href="#">1 Bedroom Apartments for sale in Dubai</a></li>
+                        <li><a href="#">1 Bedroom Apartments for sale in Dubai Science Park</a></li>
+                        <li><a href="#">1 Bedroom Apartments for sale in Binghatti Hillviews</a></li>
+                    </ul>
+                </div>
+                <!-- Nearby Section -->
+                <div class="nearby-section">
+                    <div class="nearby-title">Near Binghatti Hillviews</div>
+                    <ul class="nearby-list">
+                        <li><a href="#">Skyville Residences Apartments</a></li>
+                        <li><a href="#">Empire Living Apartments</a></li>
+                        <li><a href="#">SAAS Hills Apartments</a></li>
+                        <li><a href="#">11 Hills Park Apartments</a></li>
+                        <li><a href="#">Orchid Residence Apartments</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Collapse/Expand Key Features on Read Less click
+        const keyFeaturesSection = document.getElementById('key-features-section');
+        const readLessToggle = document.getElementById('read-less-toggle');
+        let keyFeaturesExpanded = true;
+        function collapseKeyFeatures() {
+            keyFeaturesSection.style.maxHeight = '0px';
+            keyFeaturesSection.style.overflow = 'hidden';
+            readLessToggle.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
+            keyFeaturesExpanded = false;
+        }
+        function expandKeyFeatures() {
+            keyFeaturesSection.style.maxHeight = keyFeaturesSection.scrollHeight + 'px';
+            keyFeaturesSection.style.overflow = 'visible';
+            readLessToggle.innerHTML = 'Read Less <i class="fas fa-chevron-up"></i>';
+            keyFeaturesExpanded = true;
+        }
+        readLessToggle.addEventListener('click', function() {
+            if (keyFeaturesExpanded) {
+                collapseKeyFeatures();
+            } else {
+                expandKeyFeatures();
+            }
+        });
+        expandKeyFeatures();
+    </script>
+</body>
+</html>
